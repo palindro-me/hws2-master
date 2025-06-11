@@ -1,0 +1,102 @@
+.message {
+    display: flex;
+    justify-content: flex-end; /* выравнивание блока сообщения вправо */
+    margin: 10px 0;
+}
+
+.imageAndText {
+    display: flex;
+    flex-direction: row-reverse; /* аватар или его место — справа */
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.imageAndText img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%; /* круглая форма аватара */
+    object-fit: cover;  /* изображение не искажается */
+}
+
+.text {
+    background-color: #0b5ed7; /* насыщенный синий фон */
+    color: white;
+    border-radius: 12px 12px 0 12px; /* закругления: левый верхний угол острый */
+    padding: 10px 14px;
+    max-width: 530px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    position: relative; /* для позиционирования .text:after (указателя) */
+}
+
+.text:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: -8px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid #0b5ed7; /* синий треугольник (указатель) */
+    border-top: 8px solid transparent}
+
+
+
+/*.message {*/
+/*    display: flex;*/
+/*    justify-content: flex-end;*/
+/*    margin: 10px 0;*/
+/*}*/
+
+/*.imageAndText {*/
+/*    display: flex;*/
+/*    flex-direction: row-reverse;*/
+/*    align-items: flex-end;*/
+/*    gap: 10px;*/
+/*}*/
+
+/*.imageAndText img {*/
+/*    width: 36px;*/
+/*    height: 36px;*/
+/*    border-radius: 50%; !* круглая форма аватара *!*/
+/*    object-fit: cover; !* изображение не искажается *!*/
+/*}*/
+
+/*.text {*/
+/*    background-color: #0b5ed7;*/
+/*    color: white;*/
+/*    border-radius: 10px 10px 0 10px;*/
+/*    padding: 10px 12px;*/
+/*    max-width: 530px;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    gap: 6px;*/
+
+
+/*}*/
+
+/*.text:after {*/
+
+/*}*/
+
+/*.name {*/
+
+/*    font-size: 18px;*/
+/*    font-weight: 600;*/
+/*    text-align: right;*/
+
+/*}*/
+
+/*.messageText {*/
+/*    white-space: pre-wrap; !* перенос строк сохраняется *!*/
+/*    font-size: 14px;*/
+/*    line-height: 1.4;*/
+/*}*/
+
+/*.time {*/
+/*    font-size: 12px;*/
+/*    color: gray;*/
+/*    margin-right: 52px; !* чтобы не прилипло к краю *!*/
+/*    margin-top: 4px;*/
+/*    align-self: flex-end; !* выравнивание по нижнему краю блока .text *!*/
+/*}*/
