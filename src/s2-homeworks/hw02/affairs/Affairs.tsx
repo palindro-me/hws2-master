@@ -8,38 +8,41 @@ type AffairsPropsType = {
     setFilter: (filter: FilterType) => void
     deleteAffairCallback: (_id: number) => void
     filter: FilterType
+    updateAffairTitle: (affairId: number,title: string) => void
+
 }
 
 function Affairs(props: AffairsPropsType) {
     const setAll = () => {
-        props.setFilter('all')
+        props.setFilter('all');
 
-    }
+    };
     const setHigh = () => {
-        props.setFilter('high')
+        props.setFilter('high');
 
-    }
+    };
     const setMiddle = () => {
 
-        props.setFilter('middle')
-    }
+        props.setFilter('middle');
+    };
     const setLow = () => {
-        props.setFilter('low')
+        props.setFilter('low');
 
-    }
+    };
 
-    const cnAll = s.button + ' ' + s.all + (props.filter === 'all' ? ' ' + s.active : '')
-    const cnHigh = s.button + ' ' + s.high + (props.filter === 'high' ? ' ' + s.active : '')
-    const cnMiddle = s.button + ' ' + s.middle + (props.filter === 'middle' ? ' ' + s.active : '')
-    const cnLow = s.button + ' ' + s.low + (props.filter === 'low' ? ' ' + s.active : '')
+    const cnAll = s.button + ' ' + s.all + (props.filter === 'all' ? ' ' + s.active : '');
+    const cnHigh = s.button + ' ' + s.high + (props.filter === 'high' ? ' ' + s.active : '');
+    const cnMiddle = s.button + ' ' + s.middle + (props.filter === 'middle' ? ' ' + s.active : '');
+    const cnLow = s.button + ' ' + s.low + (props.filter === 'low' ? ' ' + s.active : '');
 
     const mappedAffairs = props.data.map((a: AffairType) => (
         <Affair
             key={a._id} // кеи ОБЯЗАТЕЛЬНЫ в 99% - так что лучше их писать всегда при создании компонент в мапе
             affair={a}
             deleteAffairCallback={props.deleteAffairCallback}
+            updateAffairTitle={props.updateAffairTitle}
         />
-    ))
+    ));
 
     return (
         <div>
@@ -75,7 +78,7 @@ function Affairs(props: AffairsPropsType) {
             </div>
             <div className={s.affairs}>{mappedAffairs}</div>
         </div>
-    )
+    );
 }
 
-export default Affairs
+export default Affairs;
