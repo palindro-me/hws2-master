@@ -2,42 +2,35 @@ import React from 'react';
 import {AffairType} from '../../HW2';
 import s from './Affair.module.css';
 import s2 from '../Affairs.module.css';
-import {CreateItem} from '../../CreateItem';
+import {EditableSpan} from '../../EditableSpan';
 
 type AffairPropsType = {
     // key не нужно типизировать
     affair: AffairType
-    deleteAffairCallback: (_id: number) => void //
-    updateAffairTitle: (affairId: number, title: string) => void
-
-
+    deleteAffairCallback:  (_id: number) => void // need to fix any
+    changeAffairTitle: (id: number, newTitle: string) => void
 }
 
 function Affair(props: AffairPropsType) {
     const deleteCallback = () => {
-        // need to fix
-        props.deleteAffairCallback(props.affair._id);
-
-    };
-
-    const nameClass = s.name + ' ' + s2[props.affair.priority];
-    const buttonClass = s.closeButton + ' ' + s2[props.affair.priority];
-    const affairClass = s.affair + ' ' + s2[props.affair.priority];
-
-    const updateAffairTitleHandler = (newName: string) => {
-        props.updateAffairTitle(props.affair._id,newName);
+    props.deleteAffairCallback(props .affair._id)
     }
 
+    const nameClass = s.name + ' ' + s2[props.affair.priority]
+    const buttonClass = s.closeButton + ' ' + s2[props.affair.priority]
+    const affairClass = s.affair + ' ' + s2[props.affair.priority]
 
+    const changeAffairTitleHandler = (newName: string) => {
+         props.changeAffairTitle(props.affair._id, newName)
+    }
     return (
         <div
             id={'hw2-affair-' + props.affair._id}
             className={affairClass}
         >
             <div id={'hw2-name-' + props.affair._id} className={nameClass}>
-                <CreateItem oldName={props.affair.name} onChangeF={updateAffairTitleHandler}/>
                 {/*создаёт студент*/}
-                {/*{props.affair.name}*/}
+               <EditableSpan oldName={props.affair.name} onChangeF={changeAffairTitleHandler}/>
                 {/**/}
             </div>
             <div id={'hw2-priority-' + props.affair._id} hidden>
@@ -47,8 +40,8 @@ function Affair(props: AffairPropsType) {
             <button
                 id={'hw2-button-delete-' + props.affair._id}
                 className={buttonClass}
-                // need to fix
                 onClick={deleteCallback}
+                // need to fix
 
             >
                 {/*текст кнопки могут изменить студенты*/}
@@ -56,7 +49,7 @@ function Affair(props: AffairPropsType) {
                 {/**/}
             </button>
         </div>
-    );
+    )
 }
 
-export default Affair;
+export default Affair

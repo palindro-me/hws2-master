@@ -17,7 +17,7 @@ import s2 from '../../s1-main/App.module.css';
 * */
 
 // types
-export type AffairPriorityType = 'low' | 'high' | 'middle' //
+export type AffairPriorityType = 'low' | 'middle' | 'high' //
 export type AffairType = {
     _id: number //
     name: string //
@@ -26,41 +26,39 @@ export type AffairType = {
 export type FilterType = 'all' | AffairPriorityType
 
 // constants
-const defaultAffairs: AffairType[] = [ //
+const defaultAffairs: AffairType[] = [ // need to fix any
     {_id: 1, name: 'React', priority: 'high'}, // студенты могут изменить содержимое name и количество элементов в массиве, ...priority не менять!
     {_id: 2, name: 'anime', priority: 'low'},
     {_id: 3, name: 'games', priority: 'low'},
     {_id: 4, name: 'work', priority: 'high'},
     {_id: 5, name: 'html & css', priority: 'middle'},
-];
+]
 
 // pure helper functions
+export const filterAffairs = (affairs: AffairType[], filter: FilterType): AffairType[] => { // need to fix any
+if (filter === 'all') return affairs
+     return affairs.filter(a => a.priority === filter)
 
+}
+export const deleteAffair = (affairs: AffairType[], _id: number): AffairType[] => { // need to fix any
 
-export const filterAffairs = (affairs: AffairType[], filter: FilterType): AffairType[] => { // need to fix a
-
-    if (filter === 'all') return affairs;
-    return affairs.filter(a => a.priority === filter); //
-};
-
-export const deleteAffair = (affairs: AffairType[], _id: number): AffairType[] => { //
-    return affairs.filter(a => a._id !== _id); // need to fix
-};
+    return affairs.filter(a => a._id !== _id  ) //
+}
 
 function HW2() {
-    const [affairs, setAffairs] = useState<AffairType[]>(defaultAffairs); // need to fix any
-    const [filter, setFilter] = useState<FilterType>('all');
+    const [affairs, setAffairs] = useState<AffairType[]>(defaultAffairs) // need to fix any
+    const [filter, setFilter] = useState<FilterType>('all')
 
-    const updateAffairTitle = ( affairId: number,title: string)  => {
-setAffairs(affairs.map(a => a._id === affairId ? {...a,name: title} : a))
-};
+    const filteredAffairs = filterAffairs(affairs, filter)
+    const deleteAffairCallback = (_id: number) => { // need to fix any
+        setAffairs(deleteAffair(affairs,_id))
+    }
 
-    const filteredAffairs = filterAffairs(affairs, filter);
-    const deleteAffairCallback = (_id: number) => { //
-        //
-        setAffairs(deleteAffair(affairs, _id));
-    };
+    const changeAffairTitle = (id: number, newTitle: string) => {
+        setAffairs(affairs.map(a => a._id === id ? {...a,name: newTitle } : a))
+            
 
+    }
     return (
         <div id={'hw2'}>
             <div className={s2.hwTitle}>Homework #2</div>
@@ -70,11 +68,11 @@ setAffairs(affairs.map(a => a._id === affairId ? {...a,name: title} : a))
                     setFilter={setFilter}
                     deleteAffairCallback={deleteAffairCallback}
                     filter={filter}
-                    updateAffairTitle={updateAffairTitle}
+                    changeAffairTitle={changeAffairTitle}
                 />
             </div>
         </div>
-    );
+    )
 }
 
-export default HW2;
+export default HW2
