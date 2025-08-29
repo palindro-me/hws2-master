@@ -27,16 +27,29 @@
 .nav {
     display: flex;
     flex-direction: column;
-     padding: 0 70px;
+    padding: 0 70px;
+    gap: 10px;
+    transition: all 0.2s ease;
 }
 
 .nav a {
+    font-weight: 600;
+    font-size: 22px;
+    text-decoration: none;
+    color: #000;
 }
 
 .nav a:hover {
+    font-weight: 600;
+    font-size: 22px;
+    text-decoration: underline;
+    color: #0059b2;
 }
 
 .nav a.active {
+    font-weight: 600;
+    font-size: 22px;
+    color: #58acff;
 }
 
 .close {
