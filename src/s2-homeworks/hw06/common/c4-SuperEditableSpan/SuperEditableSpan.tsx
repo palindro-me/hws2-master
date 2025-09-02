@@ -1,12 +1,7 @@
-import React, {
-    DetailedHTMLProps,
-    InputHTMLAttributes,
-    HTMLAttributes,
-    useState,
-} from 'react'
-import s from './SuperEditableSpan.module.css'
-import SuperInputText from '../../../hw04/common/c1-SuperInputText/SuperInputText'
-import editIcon from './editIcon.svg'
+import React, {DetailedHTMLProps, HTMLAttributes, InputHTMLAttributes, useState,} from 'react';
+import s from './SuperEditableSpan.module.css';
+import SuperInputText from '../../../hw04/common/c1-SuperInputText/SuperInputText';
+import editIcon from './editIcon.svg';
 
 // тип пропсов обычного инпута
 type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>,
@@ -23,7 +18,7 @@ type SuperEditableSpanType = Omit<DefaultInputPropsType, 'type'> & {
     onEnter?: () => void
     error?: string
 
-    spanProps?: DefaultSpanPropsType  & {defaultText?: string}// пропсы для спана
+    spanProps?: DefaultSpanPropsType & { defaultText?: string }// пропсы для спана
 }
 
 const SuperEditableSpan: React.FC<SuperEditableSpanType> = (
@@ -36,30 +31,31 @@ const SuperEditableSpan: React.FC<SuperEditableSpanType> = (
         ...restProps // все остальные пропсы попадут в объект restProps
     }
 ) => {
-    const [editMode, setEditMode] = useState<boolean>(false)
+    const [editMode, setEditMode] = useState<boolean>(false);
     const {children, onDoubleClick, className, defaultText, ...restSpanProps} =
-    spanProps || {}
+    spanProps || {};
 
     const onEnterCallback = () => {
         // выключить editMode при нажатии Enter // делают студенты
-
-        onEnter?.()
-    }
+        setEditMode(false);
+        onEnter?.();
+        
+    };
     const onBlurCallback = (e: React.FocusEvent<HTMLInputElement>) => {
         // выключить editMode при нажатии за пределами инпута // делают студенты
-
-        onBlur?.(e)
-    }
+        setEditMode(false);
+        onBlur?.(e);
+    };
     const onDoubleClickCallBack = (
         e: React.MouseEvent<HTMLSpanElement, MouseEvent>
     ) => {
         // включить editMode при двойном клике // делают студенты
-
-        onDoubleClick?.(e)
-    }
+        setEditMode(true);
+        onDoubleClick?.(e);
+    };
 
     const spanClassName = s.span
-        + (className ? ' ' + className : '')
+        + (className ? ' ' + className : '');
 
     return (
         <>
@@ -90,7 +86,7 @@ const SuperEditableSpan: React.FC<SuperEditableSpanType> = (
                 </div>
             )}
         </>
-    )
-}
+    );
+};
 
-export default SuperEditableSpan
+export default SuperEditableSpan;
