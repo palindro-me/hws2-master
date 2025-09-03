@@ -1,24 +1,24 @@
 .App {
     --header_height: 60px;
-       padding: 24px;
+    padding: 24px;
     background-color: #fff;
-        min-height: 100vh;
-        display: flex;
+    min-height: 100vh;
+    display: flex;
     flex-direction: column;
-      color: #333
+    color: #333
 }
 
 .hw {
- max-width: 100%;
- width: 100%;
-     margin: 24px auto;
-      background: #fff;
-     border-radius: 8px;
+    max-width: 100%;
+    width: 100%;
+    min-height: 373px;
+    padding: 24px 0 24px 70px;
+    background: #fff;
+    border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     display: flex; /* добавлено */
     flex-direction: column; /* добавлено */
     gap: 16px; /* добавлено */
-
 
 
 }
@@ -27,7 +27,6 @@
     font-weight: 600;
     font-size: 22px;
     color: #000;
-
 
 
 }
